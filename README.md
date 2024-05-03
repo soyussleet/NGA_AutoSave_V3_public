@@ -32,7 +32,7 @@
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/b337e4cf-5162-48d6-8c33-09fc5f210157)  
 3.运行AAA_NGA_AutoSave_V3_AutoArchiver.py。因为当前没有记录cookie，所以会弹窗提示输入cookie，将上面复制的cookie粘贴进输入框中
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/e4340587-1fe8-406a-b698-3df83a26de0f)   
-4.因为尚未进行配置数据库，所以会报错，请参看3.3进行配置
+4.因为尚未进行配置数据库，所以会报错，请参看3.4进行配置
 
 ## 3.4.设置文件
 
@@ -40,7 +40,7 @@
 ```.\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver\settings```   
 中的```settings.json```文件中。如无该文件，可以复制```settingsTemplate.json```并更名为```settings.json```。在直接运行AAA_NGA_AutoSave_V3_AutoArchiver.py时，会自动执行复制操作。   
 **请不要修改```settingsTemplate.json```文件，更不要将修改后的该文件上传，除非你知道这个文件的作用**   
-配置```setting.json```中的```DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, TABLE_NAME_monitoring_posts, TABLE_NAME_monitoring_boards```这些变量，这些是数据库的变量。   
+配置```setting.json```中的```DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, TABLE_NAME_monitoring_posts, TABLE_NAME_monitoring_boards```这些变量，这些是数据库的变量，参看3.5。   
 其他设置可以直接看注释，或者直接使用默认值   
 常见需要自己配置的设置条目为```monitoringBoards```。如果需要修改保存至的文件夹```saveFileBaseFolder```时，可以为相对路径或绝对路径，默认中为相对路径
 
@@ -67,7 +67,7 @@
 ## 3.6.额外配置
 
 可以配置开机启动。
-为```AAA_NGA_AutoSave_V3_AutoArchiver.py```创建快捷方式。按```win+R```打开运行窗口后输入```shell:startup```进入“启动”文件夹  。将创建的快捷方式移动到“启动”文件夹
+为```AAA_NGA_AutoSave_V3_AutoArchiver.py```创建快捷方式。按```win+R```打开运行窗口后输入```shell:startup```进入“启动”文件夹  。将创建的快捷方式移动到“启动”文件夹，即可配置为开机自启动
 
 # 4.记录查找
 
