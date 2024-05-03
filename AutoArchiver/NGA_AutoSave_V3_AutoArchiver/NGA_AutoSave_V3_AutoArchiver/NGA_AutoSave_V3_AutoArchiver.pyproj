@@ -1,0 +1,72 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>87d481b0-8675-4dac-bc49-5cd971bddb75</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>AAA_NGA_AutoSave_V3_AutoArchiver.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>NGA_AutoSave_V3_AutoArchiver</Name>
+    <RootNamespace>NGA_AutoSave_V3_AutoArchiver</RootNamespace>
+    <TestFramework>Pytest</TestFramework>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AAA_NGA_AutoSave_V3_AutoArchiver.py" />
+    <Compile Include="expire_post_operate.py" />
+    <Compile Include="db_managers\__init__.py" />
+    <Compile Include="download_post.py" />
+    <Compile Include="download_posts_thread_controller.py" />
+    <Compile Include="db_managers\monitoring_boards_db_manager.py" />
+    <Compile Include="get_posts_in_boards.py" />
+    <Compile Include="db_managers\monitoring_posts_db_manager.py" />
+    <Compile Include="utils\cookie_format.py" />
+    <Compile Include="utils\m_requests.py" />
+    <Compile Include="utils\m_paths.py" />
+    <Compile Include="utils\print_if.py" />
+    <Compile Include="utils\setting_manager.py" />
+    <Compile Include="test.py" />
+    <Compile Include="utils\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="db_managers\" />
+    <Folder Include="settings\" />
+    <Folder Include="utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
+    <Content Include="settings\settingsTemplate.json" />
+    <Content Include="settings\settings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.10</Version>
+      <Description>env (Python 3.10 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
