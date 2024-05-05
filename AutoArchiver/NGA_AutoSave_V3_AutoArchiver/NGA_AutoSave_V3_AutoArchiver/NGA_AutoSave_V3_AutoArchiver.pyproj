@@ -24,6 +24,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AAA_NGA_AutoSave_V3_AutoArchiver.py" />
+    <Compile Include="utils\nga_html_to_md.py" />
     <Compile Include="expire_post_operate.py" />
     <Compile Include="db_managers\__init__.py" />
     <Compile Include="download_post.py" />

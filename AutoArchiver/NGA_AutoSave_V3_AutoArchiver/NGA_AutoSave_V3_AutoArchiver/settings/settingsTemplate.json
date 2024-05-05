@@ -98,7 +98,10 @@
 	"ngaBaseUrl": "https://bbs.nga.cn",
 
 	"annotation_tidBaseUrl": "帖子的基础url",
-	"tidBaseUrl": "read.php?tid="
+	"tidBaseUrl": "read.php?tid=",
+
+	"annotation_imgBaseUrl": "图片的基础url",
+	"imgBaseUrl": "https://img.nga.178.com/attachments"
 
 
 }

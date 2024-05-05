@@ -11,6 +11,8 @@ import re,os
 from utils.print_if import print_if
 from utils.m_requests import MRequests
 from requests import Response
+from utils.nga_html_to_md import PostExtractor
+
 
 ngaBaseUrl=setting_manager.get("ngaBaseUrl")
 tidBaseUrl=setting_manager.get("tidBaseUrl")
@@ -69,7 +71,8 @@ class DownloadPostOperator:
         if mainmenu_div:  
             mainmenu_div.decompose()  
   
-        # 2. 修改链接  
+        # 2. 修改链接，废弃不做了
+        '''  
         hrefs = soup.find_all('a', href=True)  
         for a_tag in hrefs:  
             href = a_tag['href']  
@@ -81,7 +84,7 @@ class DownloadPostOperator:
                 # 否则，在链接前面加上'https://bbs.nga.cn/'  
                 #a_tag['href'] = 'https://bbs.nga.cn/' + href  
                 a_tag['href'] = f'{ngaBaseUrl}/{href}' 
-            
+        '''
   
         # 4. 将__CURRENT_UNAME置为空字符串  
         for script in soup.find_all('script'):  
@@ -189,6 +192,13 @@ class DownloadPostOperator:
                     print_if(f"网页已成功保存为 {filename}，使用gbk编码\n",3)  
             except OSError as e:
                 print_if(f"保存网页{filename}时出现错误: {e}",2)
+
+            # 保存为md
+            final_floor=PostExtractor(page_html_text).extract_and_save_md(
+                post_outline.tidTitle,post_outline.tid,f"{folder_name}/{tid_part}.md",post_outline.repliesCnt)
+
+            # 更新帖子最新回帖数量
+            post_outline.repliesCnt=final_floor
           
             # 检查是否存在下一页  
             next_page_pattern = r"<a class=\"pager_spacer\" href=\"(.*?)\" title=\"下一页\">"  

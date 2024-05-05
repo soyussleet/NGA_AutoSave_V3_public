@@ -100,9 +100,11 @@ def extract_post_info(html,fid_or_stid="")->list[MonitoringPost]:
     post_info = []  
   
     for post_row in post_rows:  
-        # 查找回帖数量的<a>标签  
+        '''
+        # 查找回帖数量的<a>标签  ，因为需要保存至md，所以不在构建时赋值
         replies_elem = post_row.find('a', class_='replies')  
         replies_cnt = replies_elem.text if replies_elem else None  
+        '''
   
         # 查找帖子标题的<a>标签  
         title_elem = post_row.find('a', class_='topic')  
@@ -152,7 +154,7 @@ def extract_post_info(html,fid_or_stid="")->list[MonitoringPost]:
         existing_post.posterUrl=poster_url if existing_post.posterUrl is None else existing_post.posterUrl
         existing_post.validState=1 # if existing_post.validState is None else existing_post.validState # 当帖子出现在首页时，其必然为可用的（可能会被主动过滤），因此这里不采用数据库中记录的validState
         existing_post.lastPage=1 if existing_post.lastPage is None else existing_post.lastPage
-        existing_post.repliesCnt=replies_cnt # if existing_post.repliesCnt is None else existing_post.repliesCnt # 回帖数量只会从访问版面获得，因为数据库存的数据是旧的
+        existing_post.repliesCnt=-1 if existing_post.repliesCnt is None else existing_post.repliesCnt # 因为帖子0楼也是有意义的，所以定义为-1以将其定为无意义
         existing_post.firstPostTime=first_post_time_datetime if existing_post.firstPostTime is None else existing_post.firstPostTime
         existing_post.finalReplayTime=final_replay_time_datetime if existing_post.finalReplayTime is None else existing_post.finalReplayTime
         existing_post.fidOrStid=fid_or_stid if existing_post.fidOrStid is None else existing_post.fidOrStid
