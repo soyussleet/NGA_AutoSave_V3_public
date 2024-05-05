@@ -11,6 +11,7 @@
 2.将所有帖子保存到本地,**并隐去留档者的信息**  
 3.数据库管理保存帖子的记录，并使用数据库进行一定分析  
 4.坟贴处理，超过监控期限的帖子不再下载，超过保存期限的帖子不再保存（记录为已被删帖的除外）  
+5.全篇帖子保留到markdown文档中，体积更小
 
 # 3.使用方式
 
@@ -75,6 +76,9 @@
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/68e8b669-5981-42a4-a3e4-af75676be785)  
 在```pageSaved```文件夹中（如果```setting.json```配置了```saveFileBaseFolder```，则在对应文件夹中），可以找到保存的帖子网页  
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/8f393d9e-5f0f-4ce3-a953-b9d9d737f5fd)
+
+# 5.注意
+1.初次保留超高楼层的帖子的时候会因为服务器关闭session而出错，这时候需要在settings里添加标题过滤，或在数据库中手动添加相关记录，并将lastPage修改为当前真实的末页页码
 
 
 
