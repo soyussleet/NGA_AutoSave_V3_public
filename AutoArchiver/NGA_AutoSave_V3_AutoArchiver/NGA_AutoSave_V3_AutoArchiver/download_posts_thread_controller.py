@@ -56,9 +56,9 @@ def download_posts_thread_controller():
                     print_if(f"下载成功")
                 else:  
                     pass
-                    print_if(f"下载帖子返回了非预期的结果: {post.toString()}\n",2)  
+                    print_if(f"下载帖子返回了非预期的结果\n",2)  
             except Exception as exc:  
-                print_if(f'生成帖子 {post.tid} 时出错: {exc}\n',2)
+                print_if(f'生成帖子时出错: {exc}\n',2)
                 ##### 这里要添加处理validState
 
 

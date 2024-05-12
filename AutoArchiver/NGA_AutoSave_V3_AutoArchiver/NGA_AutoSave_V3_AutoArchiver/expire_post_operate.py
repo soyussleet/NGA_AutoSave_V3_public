@@ -50,5 +50,7 @@ def expire_post_operate():
                     print_if(f"已经删除tid={post.tid}的保存文件和数据库记录",1)
                 else:
                     print_if(f"已经删除tid={post.tid}的保存文件",1)
+                post.validState=6
+                monitoring_posts_db_manager.update_or_add_post(post)
 
 
