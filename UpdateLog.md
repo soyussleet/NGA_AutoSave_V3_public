@@ -4,7 +4,7 @@
 ## V3.1
 
 * 1.新增下载卡死重置，现在在卡死后会自动重启下载线程了  
-* 2.新增初步的服务端，distribute_server，使用django编写。目前能获取记录中的帖子了，并且能对TID、标题、发帖人进行搜索，并且能筛选被ban的帖子。访问链接为[http://127.0.0.1:8080/mainApp/dbGetAll]，可以自行修改启动文件以修改ip:port
+* 2.新增初步的服务端，distribute_server，使用django编写。目前能获取记录中的帖子了，并且能对TID、标题、发帖人进行搜索，并且能筛选被ban的帖子。访问链接为[http://127.0.0.1:8080/mainApp/dbGetAll](http://127.0.0.1:8080/mainApp/dbGetAll)，可以自行修改启动文件以修改ip:port
 * 3.在根目录新增启动文件
   
 ### 后续
