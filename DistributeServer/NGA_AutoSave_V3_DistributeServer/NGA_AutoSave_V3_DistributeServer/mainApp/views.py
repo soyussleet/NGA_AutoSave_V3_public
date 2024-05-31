@@ -1,13 +1,13 @@
 from urllib.request import Request
-from django.shortcuts import render
-from django.core.paginator import Paginator 
-from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render # type: ignore
+from django.core.paginator import Paginator # type: ignore
+from django.http import HttpRequest, HttpResponse# type: ignore
 from mainApp.models import MonitoringPosts
 from misc.utils import setting_manager
-from django.db.models import Q  
+from django.db.models import Q  # type: ignore
 
 monitoringBoards=setting_manager.get("monitoringBoards")
-per_page=setting_manager.get("web_posts_per_page")
+per_page=setting_manager.get("show_posts_per_page",100)
 
 
 def dbGetAll(request:HttpRequest):

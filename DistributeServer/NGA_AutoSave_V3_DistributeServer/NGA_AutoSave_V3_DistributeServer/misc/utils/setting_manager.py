@@ -35,10 +35,10 @@ def save_settings(setting_path=setting_path):
     with open(setting_path, 'w',encoding='utf-8') as f:  
         json.dump(settings_cache, f)  
   
-def get(key:str):  
+def get(key:str,default=None):  
     """从缓存字典中获取设置值"""  
     global settings_cache  
-    return settings_cache.get(key)  
+    return settings_cache.get(key,default)  
   
 def update(key, value):  
     """更新缓存字典中的设置值，并保存到JSON文件"""  

@@ -1,3 +1,4 @@
+{% load l10n %}
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -10,21 +11,21 @@
         {% if paginator.num_pages > 1 %}
         <span class="step-links">
             {% if page_obj.has_previous %}
-            <a href="?page=1{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">&laquo; 首页</a>
-            <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">上一页</a>
+            <a href="?page=1{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=on{% endif %}">&laquo; 首页</a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=on{% endif %}">上一页</a>
             {% endif %}
 
             {% for page_num in page_range %}
             {% if page_num == page_obj.number %}
             <span class="current">{{ page_num }}</span>
             {% else %}
-            <a href="?page={{ page_num }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">{{ page_num }}</a>
+            <a href="?page={{ page_num }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=on{% endif %}">{{ page_num }}</a>
             {% endif %}
             {% endfor %}
 
             {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">下一页</a>
-            <a href="?page={{ paginator.num_pages }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">末页 &raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=on{% endif %}">下一页</a>
+            <a href="?page={{ paginator.num_pages }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=on{% endif %}">末页 &raquo;</a>
             {% endif %}
         </span>
         <form method="get" action="dbGetAll">
@@ -61,13 +62,13 @@
             {% for post in monitoring_posts %}
             <tr>
                 <td>{{ post.sharp }}</td>
-                <td>{{ post.tid }}</td>
+                <td><a href="https://bbs.nga.cn/read.php?tid={{ post.tid }}" target="_blank">{{ post.tid }}</a></td>
                 <td>{{ post.tidTitle }}</td>
                 <td>{{ post.validStateDisplay }}</td>
                 <td>{{ post.poster }}</td>
-                <td>{{ post.firstPostTime }}</td>
+                <td>{{ post.firstPostTime|date:"Y-m-d H:i" }}</td>
                 <td>{{ post.repliesCnt }}</td>
-                <td>{{ post.finalReplayTime }}</td>
+                <td>{{ post.finalReplayTime|date:"Y-m-d H:i" }}</td>
                 <td>{{ post.board }}</td>
             </tr>
             {% endfor %}

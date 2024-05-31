@@ -1,0 +1,3 @@
+cd /d .\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver
+python AAA_NGA_AutoSave_V3_AutoArchiver.py
+pause
