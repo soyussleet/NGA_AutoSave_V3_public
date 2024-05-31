@@ -1,5 +1,8 @@
 # NGA_AutoSave_V3_public
- NGA赛博史官**V3.1**
+# NGA赛博史官**V3**
+
+# 0.更新日志
+[更新日志 V3.1](UpdateLog.md)
 
 # 1.目的
 
