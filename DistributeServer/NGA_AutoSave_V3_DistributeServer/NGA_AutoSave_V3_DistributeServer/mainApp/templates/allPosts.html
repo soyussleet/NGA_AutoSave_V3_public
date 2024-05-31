@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>所有记录</title>
+</head>
+<body>
+    <div class="pagination">
+        {% if paginator.num_pages > 1 %}
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">&laquo; 首页</a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">上一页</a>
+            {% endif %}
+
+            {% for page_num in page_range %}
+            {% if page_num == page_obj.number %}
+            <span class="current">{{ page_num }}</span>
+            {% else %}
+            <a href="?page={{ page_num }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">{{ page_num }}</a>
+            {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">下一页</a>
+            <a href="?page={{ paginator.num_pages }}{% if search_query %}&dbAllSearch={{ search_query }}{% endif %}{% if only_deleted %}&only_deleted=true{% endif %}">末页 &raquo;</a>
+            {% endif %}
+        </span>
+        <form method="get" action="dbGetAll">
+            <label for="page_input">跳转到第</label>
+            <input type="number" id="page_input" name="page" min="1" max="{{ paginator.num_pages }}" value="{{ page_obj.number }}">
+            <button type="submit">页</button>
+        </form>
+        {% endif %}
+        <form method="get" action="">
+            <label for="db_all_search">搜索（从TID、标题、发帖人）</label>
+            <input type="text" id="db_all_search" name="dbAllSearch" value="{{ search_query }}">
+            <label for="only_deleted">
+                <input type="checkbox" id="only_deleted" name="only_deleted" {% if only_deleted %}checked{% endif %}>
+                仅筛选已被删除的帖子
+            </label>
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>TID</th>
+                <th>标题</th>
+                <th>可用状态</th>
+                <th>发帖人</th>
+                <th>发帖时间</th>
+                <th>回帖数量</th>
+                <th>最后回帖时间</th>
+                <th>所在版面</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in monitoring_posts %}
+            <tr>
+                <td>{{ post.sharp }}</td>
+                <td>{{ post.tid }}</td>
+                <td>{{ post.tidTitle }}</td>
+                <td>{{ post.validStateDisplay }}</td>
+                <td>{{ post.poster }}</td>
+                <td>{{ post.firstPostTime }}</td>
+                <td>{{ post.repliesCnt }}</td>
+                <td>{{ post.finalReplayTime }}</td>
+                <td>{{ post.board }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

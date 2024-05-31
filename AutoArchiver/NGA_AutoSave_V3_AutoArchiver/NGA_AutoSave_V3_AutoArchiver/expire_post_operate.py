@@ -15,6 +15,7 @@ saveFileBaseFolder:str=setting_manager.get("saveFileBaseFolder")# 基础存档�
 needDelPostExpireInDb:bool=setting_manager.get("needDelPostExpireInDb")# 基础存档文件夹
 
 def expire_post_operate():
+    '''遍历删除已过期帖子'''
     print_if("开始遍历删除已过期帖子",5)
     posts = monitoring_posts_db_manager.query_all_posts()
     for post in posts:

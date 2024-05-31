@@ -6,49 +6,61 @@ from utils import setting_manager
 import threading  
 import time
 from datetime import datetime  
-from utils.print_if import print_if
-from expire_post_operate import expire_post_operate
+from utils.print_if import print_if,print_passed_time
+
+download_should_stop = threading.Event()
+is_downloading=False
+deadlock_timeout=setting_manager.get("downloadThreadDeadlockTimeout",30)
   
-  
-# 这个函数会循环执行download_posts_thread_controller，并在每次执行后等待指定的时间间隔  
 def run_download_posts_thread(): 
-    
-    interval=60
-    while True:  
+    '''循环执行download_posts_thread_controller，并在每次执行后等待指定的时间间隔'''
+    global is_downloading
+    while not download_should_stop.is_set():  
+        is_downloading=True
         download_posts_thread_controller()
-        expire_post_operate()
-        interval_arr=setting_manager.get("downloadLoopinterval")
+        interval_arr=setting_manager.get("downloadLoopinterval",60)
         interval=interval_arr[datetime.now().hour]
         print_if(f"下次抓取间隔:{interval}s\n\n\n\n\n",5)
+        is_downloading=False
         time.sleep(interval)  
-  
-# 这个函数用于用户交互  
-def user_input():  
+   
+def run_monitor_thread():  
+    '''监控线程，检查并可能重启 download_posts_'''
+    global is_downloading
     while True:  
-        user_command = input("请输入命令 (输入'exit'退出): ")  
-        if user_command.lower() == 'exit':  
-            print("用户请求退出，程序将结束。")  
-            break  
-        # 这里可以添加更多的命令处理逻辑  
-        print(f"收到命令: {user_command}")  
-  
+        time.sleep(5)  # 每5秒检查一次  
+        # 不在下载中时不检测卡死
+        if not is_downloading:
+            continue
+        
+        current_pass_time = print_passed_time()  
+        print_if(f"====================current_pass_time: {current_pass_time}",6,False)
+        if current_pass_time > deadlock_timeout:  
+            print_if("下载线程卡死，准备重启",2,False)  
+            download_should_stop.set()  
+            time.sleep(1)  # 假设线程在1秒内会响应停止信号  
+              
+            # 清除停止标志并启动新线程（或重用旧线程对象）  
+            download_should_stop.clear()  
+            download_thread = threading.Thread(target=run_download_posts_thread)  
+            download_thread.daemon = True  # 根据需要设置  
+            download_thread.start()  
+
+
 # 工程入口  
 def main():  
-    # 创建下载帖子的线程  
+    '''创建下载帖子的线程'''  
+    # 启动下载线程
     download_thread = threading.Thread(target=run_download_posts_thread)  # 假设间隔是5秒  
     download_thread.daemon = True  # 设置为守护线程，主线程退出时它也会退出  
     download_thread.start()  
-  
-    # 创建用户输入的线程  
-    input_thread = threading.Thread(target=user_input)  
-    input_thread.start()  
-  
-    # 主线程等待用户输入线程结束（在真实情况下，您可能不需要这么做，因为user_input线程是无限循环的）  
-    input_thread.join()  
-  
-    # 实际上，由于download_thread是守护线程，主线程退出时它也会退出  
-    # 如果需要等待download_thread结束，需要取消daemon设置，并调用download_thread.join()  
-  
+    #download_thread.join()  
+    
+    # 启动监控线程（通常不是守护线程，以确保它在主线程结束后仍然运行）
+    monitor_thread = threading.Thread(target=run_monitor_thread)  
+    monitor_thread.start()  
+    monitor_thread.join() 
+
 # 运行主函数  
 if __name__ == "__main__":  
     main()

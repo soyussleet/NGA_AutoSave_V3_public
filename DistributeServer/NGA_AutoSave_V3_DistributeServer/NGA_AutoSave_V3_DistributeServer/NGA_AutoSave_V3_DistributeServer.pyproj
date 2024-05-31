@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>NGA_AutoSave_V3_DistributeServer</Name>
+    <RootNamespace>NGA_AutoSave_V3_DistributeServer</RootNamespace>
+    <InterpreterId>
+    </InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>e8639895-a9da-4caa-8f7d-9a94c79fe54d</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <DjangoSettingsModule>NGA_AutoSave_V3_DistributeServer.settings</DjangoSettingsModule>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+    <PythonRunWebServerCommandArguments>runserver 127.0.0.1:8080</PythonRunWebServerCommandArguments>
+    <PythonRunWebServerCommandType />
+    <PythonDebugWebServerCommandType>代码</PythonDebugWebServerCommandType>
+    <PythonDebugWebServerCommandArguments>runserver 127.0.0.1:8080</PythonDebugWebServerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app\forms.py" />
+    <Compile Include="app\models.py" />
+    <Compile Include="app\tests.py" />
+    <Compile Include="app\views.py" />
+    <Compile Include="app\__init__.py" />
+    <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="mainApp\admin.py" />
+    <Compile Include="mainApp\apps.py" />
+    <Compile Include="mainApp\migrations\__init__.py" />
+    <Compile Include="mainApp\models.py" />
+    <Compile Include="mainApp\tests.py" />
+    <Compile Include="mainApp\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mainApp\views.py" />
+    <Compile Include="mainApp\__init__.py" />
+    <Compile Include="manage.py" />
+    <Compile Include="misc\utils\cookie_format.py" />
+    <Compile Include="misc\utils\m_paths.py" />
+    <Compile Include="misc\utils\m_requests.py" />
+    <Compile Include="misc\utils\nga_html_to_md.py" />
+    <Compile Include="misc\utils\print_if.py" />
+    <Compile Include="misc\utils\setting_manager.py" />
+    <Compile Include="misc\utils\__init__.py" />
+    <Compile Include="misc\__init__.py" />
+    <Compile Include="NGA_AutoSave_V3_DistributeServer\__init__.py" />
+    <Compile Include="NGA_AutoSave_V3_DistributeServer\settings.py" />
+    <Compile Include="NGA_AutoSave_V3_DistributeServer\urls.py" />
+    <Compile Include="NGA_AutoSave_V3_DistributeServer\wsgi.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\" />
+    <Folder Include="app\migrations\" />
+    <Folder Include="app\static\" />
+    <Folder Include="app\static\app\" />
+    <Folder Include="app\static\app\content\" />
+    <Folder Include="app\static\app\fonts\" />
+    <Folder Include="app\static\app\scripts\" />
+    <Folder Include="app\templates\" />
+    <Folder Include="app\templates\app\" />
+    <Folder Include="mainApp\" />
+    <Folder Include="mainApp\migrations\" />
+    <Folder Include="mainApp\templates\" />
+    <Folder Include="mainApp\templates\mainApp\" />
+    <Folder Include="misc\" />
+    <Folder Include="misc\settings\" />
+    <Folder Include="misc\utils\" />
+    <Folder Include="misc\utils\__pycache__\" />
+    <Folder Include="NGA_AutoSave_V3_DistributeServer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mainApp\templates\allPosts.html" />
+    <Content Include="mainApp\templates\mainApp\index.html" />
+    <Content Include="misc\settings\cookie.json" />
+    <Content Include="misc\settings\settings.json" />
+    <Content Include="misc\settings\settingsTemplate.json" />
+    <Content Include="misc\utils\__pycache__\cookie_format.cpython-310.pyc" />
+    <Content Include="misc\utils\__pycache__\cookie_format.cpython-37.pyc" />
+    <Content Include="misc\utils\__pycache__\m_paths.cpython-310.pyc" />
+    <Content Include="misc\utils\__pycache__\m_paths.cpython-37.pyc" />
+    <Content Include="misc\utils\__pycache__\m_requests.cpython-310.pyc" />
+    <Content Include="misc\utils\__pycache__\m_requests.cpython-37.pyc" />
+    <Content Include="misc\utils\__pycache__\nga_html_to_md.cpython-310.pyc" />
+    <Content Include="misc\utils\__pycache__\page_processor.cpython-310.pyc" />
+    <Content Include="misc\utils\__pycache__\print_if.cpython-310.pyc" />
+    <Content Include="misc\utils\__pycache__\setting_manager.cpython-310.pyc" />
+    <Content Include="misc\utils\__pycache__\setting_manager.cpython-37.pyc" />
+    <Content Include="misc\utils\__pycache__\__init__.cpython-310.pyc" />
+    <Content Include="misc\utils\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="requirements.txt" />
+    <Content Include="app\static\app\content\bootstrap.css" />
+    <Content Include="app\static\app\content\bootstrap.min.css" />
+    <Content Include="app\static\app\content\site.css" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\static\app\scripts\bootstrap.js" />
+    <Content Include="app\static\app\scripts\bootstrap.min.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.min.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.min.map" />
+    <Content Include="app\static\app\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.min.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="app\static\app\scripts\modernizr-2.6.2.js" />
+    <Content Include="app\static\app\scripts\respond.js" />
+    <Content Include="app\static\app\scripts\respond.min.js" />
+    <Content Include="app\static\app\scripts\_references.js" />
+    <Content Include="app\templates\app\about.html" />
+    <Content Include="app\templates\app\contact.html" />
+    <Content Include="app\templates\app\index.html" />
+    <Content Include="app\templates\app\layout.html" />
+    <Content Include="app\templates\app\login.html" />
+    <Content Include="app\templates\app\loginpartial.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.html">
+      <SubType>WebBrowser</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

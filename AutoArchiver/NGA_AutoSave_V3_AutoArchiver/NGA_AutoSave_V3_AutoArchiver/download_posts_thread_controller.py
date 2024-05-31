@@ -11,6 +11,7 @@ from db_managers import monitoring_posts_db_manager
 from utils.print_if import print_if
 from datetime import datetime  
 import time  
+from expire_post_operate import expire_post_operate
   
 ngaBaseUrl=setting_manager.get("ngaBaseUrl")
 tidBaseUrl=setting_manager.get("tidBaseUrl")
@@ -64,6 +65,10 @@ def download_posts_thread_controller():
 
     end_timestamp=time.time()
     print_if(f"帖子遍历完成，时间{datetime.now()}，用时{end_timestamp-start_timestamp}s\n",3)
+    
+    # 超时帖子处理
+    expire_post_operate()
+
 # 运行主控制器函数  
  
     #download_posts_thread_controller()
