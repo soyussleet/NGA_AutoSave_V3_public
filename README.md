@@ -32,7 +32,7 @@
 
 ## 3.3.获取cookie
 
-1.使用Edge或chrome浏览器，F12进入开发者模式，在Application->Cookies->https://bbs.nga.cn（这个链接也可以是nga.178.cn或其他的nga相关url）中，得到nga的cookies   
+1.使用Edge或chrome浏览器，F12进入开发者模式，在```Application->Cookies->https://bbs.nga.cn```（这个链接也可以是nga.178.cn或其他的nga相关url）中，得到nga的cookies   
 2.复制以"nga"开头的cookie    
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/b337e4cf-5162-48d6-8c33-09fc5f210157)   
 3.运行AAA_NGA_AutoSave_V3_AutoArchiver.py。因为当前没有记录cookie，所以会弹窗提示输入cookie，将上面复制的cookie粘贴进输入框中  
@@ -109,14 +109,14 @@ python manage.py runserver 8080
 ```  
 可以自行查询Django服务器的启动方式，以修改```启动查询服务器.cmd```或直接启动```manage.py```的启动参数。  
 
-## 5.1.快速网页/数据库查询
+## 5.2.快速网页/数据库查询
 
 当未打开查询服务器时，可以直接访问数据库，使用Navicat或VS Code的mysql插件等数据库管理软件打开。数据库配置以自动留档机的```setting.json```中的数据库配置为准。所有储存于数据库的内容都可以查询。  
 当打开了查询服务器时，访问```http://127.0.0.1:8080/mainApp/dbGetAll```即可访打开查询网页。一般，在启动```启动查询服务器.cmd```时，会自动打开该网页。如果修改了```启动查询服务器.cmd```，那么查询网页的```IP:port```需要对应修改。  
 查询服务器中目前支持查询（TID、标题、发帖人）和筛选已被删除的帖子。  
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/0e323518-82ab-4420-97f4-55db2d950acf)
 
-## 5.2.下载文件查找
+## 5.3.下载文件查找
 
 默认的留档文件在```.\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver\pageSaved```，如果修改了自动留档机的setting.json中的留档路径（```saveFileBaseFolder```），则需要对应的修改路径
 可以在数据库中按帖子id、标题、发帖人等进行搜索。更方便的是，可以直接筛选```validState=2 or retryCnt>0```的记录，即可直接筛选得到已经被删或锁的帖子(validState=1为可用，validState=2为确认被锁/删的帖子，retryCnt为帖子无法访问时的重试次数，重试次数大于一定值（默认为5）时即会被记为validState=2)。你可以安装navicat等数据库管理软件进行数据库可视化管理。    
