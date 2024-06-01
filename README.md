@@ -114,6 +114,7 @@ python manage.py runserver 8080
 当未打开查询服务器时，可以直接访问数据库，使用Navicat或VS Code的mysql插件等数据库管理软件打开。数据库配置以自动留档机的```setting.json```中的数据库配置为准。所有储存于数据库的内容都可以查询。  
 当打开了查询服务器时，访问```http://127.0.0.1:8080/mainApp/dbGetAll```即可访打开查询网页。一般，在启动```启动查询服务器.cmd```时，会自动打开该网页。如果修改了```启动查询服务器.cmd```，那么查询网页的```IP:port```需要对应修改。  
 查询服务器中目前支持查询（TID、标题、发帖人）和筛选已被删除的帖子。  
+![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/0e323518-82ab-4420-97f4-55db2d950acf)
 
 ## 5.2.下载文件查找
 
