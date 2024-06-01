@@ -26,8 +26,9 @@
 
 ## 3.2.配置python
 
-在```.\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver```中打开cmd（或cd到该文件夹），```pip3 install -r requirements.txt```安装需要的包。（也可以不cd过去，而将requirements.txt的完整绝对路径作为参数来pip install）。
-
+**python运行环境为3.10.7**，其他版本没有测试过，可能存在需要更改配置的情况。  
+在```.\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver```中打开cmd（或cd到该文件夹），```pip3 install -r requirements.txt```安装需要的包。（也可以不cd过去，而将requirements.txt的完整绝对路径作为参数来pip install）。  
+同样的，对DistributeServer也需要安装requirements.txt  
 
 ## 3.3.获取cookie
 
