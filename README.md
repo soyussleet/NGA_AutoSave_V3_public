@@ -57,18 +57,22 @@
 导入```nga_autosave_db.sql```数据库文件
 在```settings.json```中配置数据库的各个参数
 
-### 3.5.1.监控中的版面 monitoring_boards
+### ~~3.5.1.已删除监控中的版面 monitoring_boards~~
 
-记录了哪些版面需要被监控  
-![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/98214881-6d3a-4fbc-a97c-074bdd73441d)  
-注意版面id一定要带上"fid="或"stid="，单独只有id数字是无法访问到指定版面的，在配置setting.json同理
-这个不一定被使用（```setting.json```中```monitoringBoardsUseDb```设置为```false```时即不使用）   
+~~记录了哪些版面需要被监控~~  
+~~![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/98214881-6d3a-4fbc-a97c-074bdd73441d)~~  
+~~注意版面id一定要带上"fid="或"stid="，单独只有id数字是无法访问到指定版面的，在配置setting.json同理~~
+~~这个不一定被使用（```setting.json```中```monitoringBoardsUseDb```设置为```false```时即不使用）~~   
 
 
 ### 3.5.2.帖子记录 monitoring_posts
 
 所有帖子的关键数据记录  
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/882bea85-c29e-4f76-9741-cb42616aef3b)
+
+### 3.5.3.帖子统计 post_stats
+
+记录帖子的统计数据，以每天为单位统计当天的每个版面的发帖数和被删帖数
 
 ## 3.6.额外配置
 
