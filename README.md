@@ -41,9 +41,7 @@
 
 ## 3.4.设置文件
 
-设置主要在
-```.\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver\settings```   
-中的```settings.json```文件中。如无该文件，可以复制```settingsTemplate.json```并更名为```settings.json```。在直接运行AAA_NGA_AutoSave_V3_AutoArchiver.py时，会自动执行复制操作。   
+设置主要在根目录下```.\settings```文件夹中的```settings.json```文件。如无该文件，可以复制```settingsTemplate.json```并更名为```settings.json```。在直接运行AAA_NGA_AutoSave_V3_AutoArchiver.py时，会自动执行复制操作。下文中的查询服务器会共用同一个设置文件。     
 **请不要修改```settingsTemplate.json```文件，更不要将修改后的该文件上传，除非你知道这个文件的作用**   
 配置```setting.json```中的```DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, TABLE_NAME_monitoring_posts, TABLE_NAME_monitoring_boards```这些变量，这些是数据库的变量，参看3.5。   
 其他设置可以直接看注释，或者直接使用默认值   
@@ -77,8 +75,7 @@
 ## 3.6.额外配置
 
 可以配置开机启动。  
-为```AAA_NGA_AutoSave_V3_AutoArchiver.py```创建快捷方式。按```win+R```打开运行窗口后输入```shell:startup```进入“启动”文件夹  。将创建的快捷方式移动到“启动”文件夹，即可配置为开机自启动。  
-同样的，建议将mysql也设置开局自启动。如果这么做，建议自己编写一个简单的cmd脚本，等待数秒后开始执行AutoArchiver。  
+为```AAA_NGA_AutoSave_V3_AutoArchiver.py```创建快捷方式。按```win+R```打开运行窗口后输入```shell:startup```进入“启动”文件夹  。将创建的快捷方式移动到“启动”文件夹，即可配置为开机自启动。同样的，建议将mysql也设置开局自启动。
 
 # 4.配置方式（DistributeServer查询服务器部分）
 
@@ -92,13 +89,7 @@ python manage.py runserver 8080
 ```  
 后文有启动方法
 
-## 4.2.设置文件
-
-设置文件在
-```DistributeServer\NGA_AutoSave_V3_DistributeServer\NGA_AutoSave_V3_DistributeServer\misc\settings\settings.json```  
-与自动留档机一样，需要**从settingsTemplate复制到settings.json，这一步无法自动**，然后配置```setting.json```中的```DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, TABLE_NAME_monitoring_posts, TABLE_NAME_monitoring_boards```这些数据库的变量。
-
-## 4.3.注意事项
+## 4.2.注意事项
 
 查询服务器仍在开发中，目前功能暂不完善。
 
@@ -122,7 +113,7 @@ python manage.py runserver 8080
 
 ## 5.3.下载文件查找
 
-默认的留档文件在```.\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver\pageSaved```，如果修改了自动留档机的setting.json中的留档路径（```saveFileBaseFolder```），则需要对应的修改路径
+默认的留档文件在```.\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver\pageSaved```，如果修改了```setting.json```中的留档路径（```saveFileBaseFolder```），则需要对应的修改路径
 可以在数据库中按帖子id、标题、发帖人等进行搜索。更方便的是，可以直接筛选```validState=2 or retryCnt>0```的记录，即可直接筛选得到已经被删或锁的帖子(validState=1为可用，validState=2为确认被锁/删的帖子，retryCnt为帖子无法访问时的重试次数，重试次数大于一定值（默认为5）时即会被记为validState=2)。你可以安装navicat等数据库管理软件进行数据库可视化管理。    
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/68e8b669-5981-42a4-a3e4-af75676be785)    
 在```pageSaved```文件夹中（如果```setting.json```配置了```saveFileBaseFolder```，则在对应文件夹中），可以找到保存的帖子网页    
