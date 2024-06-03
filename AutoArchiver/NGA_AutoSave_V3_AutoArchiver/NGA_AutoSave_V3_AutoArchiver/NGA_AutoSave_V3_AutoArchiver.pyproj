@@ -24,17 +24,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AAA_NGA_AutoSave_V3_AutoArchiver.py" />
+    <Compile Include="db_managers\post_stats_db_manager.py" />
     <Compile Include="utils\nga_html_to_md.py" />
     <Compile Include="expire_post_operate.py" />
     <Compile Include="db_managers\__init__.py" />
     <Compile Include="download_post.py" />
     <Compile Include="download_posts_thread_controller.py" />
-    <Compile Include="db_managers\monitoring_boards_db_manager.py" />
     <Compile Include="get_posts_in_boards.py" />
     <Compile Include="db_managers\monitoring_posts_db_manager.py" />
     <Compile Include="utils\cookie_format.py" />
     <Compile Include="utils\m_requests.py" />
     <Compile Include="utils\m_paths.py" />
+    <Compile Include="utils\post_stats_operator.py" />
     <Compile Include="utils\print_if.py" />
     <Compile Include="utils\setting_manager.py" />
     <Compile Include="test.py" />
@@ -42,13 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="db_managers\" />
-    <Folder Include="settings\" />
     <Folder Include="utils\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
-    <Content Include="settings\settingsTemplate.json" />
-    <Content Include="settings\settings.json" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

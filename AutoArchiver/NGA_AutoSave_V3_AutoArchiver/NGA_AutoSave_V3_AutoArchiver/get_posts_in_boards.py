@@ -5,15 +5,11 @@
 
 
 from datetime import datetime
-from pickle import NONE
 from bs4 import BeautifulSoup
-from sqlalchemy import Null
-from db_managers import monitoring_boards_db_manager
 from db_managers.monitoring_posts_db_manager import query_by_tid,query_all_posts,MonitoringPost
 from utils import setting_manager
 from utils.print_if import print_if
 from utils.m_requests import MRequests
-import re
 
 filter_title=setting_manager.get("tidFilterTitle")
 filter_state=setting_manager.get("tidFilterValidState")
@@ -25,16 +21,9 @@ def get_posts_in_boards()->list[MonitoringPost]:
     # 数据库中现有的帖子，先行查询用于避免重复获取发帖人IP
     posts_in_db=query_all_posts()
 
-    # 获取所有的 fid 或 stid。有两种获取方法，1:去数据库monitoring_boards查；2:去setting查。这个区分被setting中的monitoringBoardsUseDb控制
+    # 获取所有的 fid 或 stid，去setting查。
     fid_or_stid_list:list=[]
-    if(setting_manager.get("monitoringBoardsUseDb")):
-        fid_or_stid_list = monitoring_boards_db_manager.get_all_fid_or_stid()
-    else:
-        fid_or_stid_list = list(setting_manager.get("monitoringBoards").keys())
-    # 获取 cookie  这里已经被整合进m_requests.easy_get了
-    #cookies = cookie_format.get_cookies()  
-
-
+    fid_or_stid_list = list(setting_manager.get("monitoringBoards").keys())
 
     # 将记录作为列表元素
     posts_in_boards_list:list[MonitoringPost]=[]

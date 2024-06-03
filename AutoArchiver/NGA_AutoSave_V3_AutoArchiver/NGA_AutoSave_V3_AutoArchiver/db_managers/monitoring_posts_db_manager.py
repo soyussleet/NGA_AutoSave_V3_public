@@ -2,14 +2,13 @@
 帖子数据库
 '''
 
-from pickle import NONE
-from types import NoneType
 from utils import setting_manager as setting
 from sqlalchemy import create_engine, MetaData, Column, Integer, String, Boolean, DateTime, ForeignKey,exc  
 from sqlalchemy.orm import scoped_session, sessionmaker, relationship  
 from sqlalchemy.ext.declarative import declarative_base  
 from utils.print_if import print_if
 import time
+from datetime import date, datetime, timedelta
   
 # 数据库连接信息  
 DB_USER = setting.get('DB_USER')  
@@ -29,7 +28,8 @@ Base.metadata.create_all(engine)
   
 # 使用scoped_session来为每个线程创建独立的Session  
 session_factory = sessionmaker(bind=engine)  
-Session = scoped_session(session_factory)  
+Session = scoped_session(session_factory) 
+session= session_factory()
 
 
   
@@ -84,14 +84,7 @@ def query_all_posts()->list[MonitoringPost]:
     
     """查询所有记录"""
     session = Session()  # 使用scoped_session获取当前线程的Session  
-    """
-    try:  
-        # 使用all()方法获取所有记录  
-        posts = session.query(MonitoringPost).all()  
-        return posts  
-    finally:  
-        Session.remove()  # 关闭session  
-    """
+
     posts:MonitoringPost = None  
     retry_cnt = 0  
     try:  
@@ -104,7 +97,6 @@ def query_all_posts()->list[MonitoringPost]:
                 print_if(f"query_all_posts时发生错误：{e}，正在重试...（剩余尝试次数：{query_db_retry_cnt_limit - retry_cnt - 1}）", 1)  
                 retry_cnt += 1  
                 if retry_cnt < query_db_retry_cnt_limit:  
-                    # 在这里可以添加一些延迟逻辑，比如time.sleep，以避免过快地重试  
                     time.sleep(1)  # 根据需要调整retry_delay的值  
                 else:  
                     # 所有重试都失败了，可以抛出异常或者返回None  
@@ -240,3 +232,31 @@ def valid_state_judge(post:MonitoringPost)->MonitoringPost:
         pass
     return post
 
+def get_posts_by_first_post_time(target_date:date=datetime.now().date()-timedelta(days=1), session=Session())->list[MonitoringPost]:  
+    '''查询所有firstPostTime在指定日期内的记录，默认为昨天'''
+    # 获取目标日期的开始和结束时间  
+    start_of_day = datetime.combine(target_date, datetime.min.time())  
+    end_of_day = datetime.combine(target_date, datetime.max.time())  
+      
+    # 查询所有firstPostTime在指定日期内的记录  
+    posts = session.query(MonitoringPost).filter(  
+        MonitoringPost.firstPostTime >= start_of_day,  
+        MonitoringPost.firstPostTime <= end_of_day  
+    ).all()  
+      
+    return posts  
+  
+def get_posts_by_valid_state_and_final_replay_time(target_date:date=datetime.now().date()-timedelta(days=1), valid_state=2, session=Session())->list[MonitoringPost]:  
+    '''查询所有validState等于指定值且finalReplayTime在指定日期内的记录，默认为昨天且validState=2'''
+    # 获取目标日期的开始和结束时间  
+    start_of_day = datetime.combine(target_date, datetime.min.time())  
+    end_of_day = datetime.combine(target_date, datetime.max.time())  
+      
+    # 查询所有validState等于指定值且finalReplayTime在指定日期内的记录  
+    posts = session.query(MonitoringPost).filter(  
+        MonitoringPost.validState == valid_state,  
+        MonitoringPost.finalReplayTime >= start_of_day,  
+        MonitoringPost.finalReplayTime <= end_of_day  
+    ).all()  
+      
+    return posts  

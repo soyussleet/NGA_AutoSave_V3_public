@@ -12,7 +12,6 @@ from utils.print_if import print_if
  
 
 cookie_json_path=m_paths.cookie_json_path
-cookie_txt_path=m_paths.cookie_txt_path
 saved_cookies={}
 
 def split_cookie_and_save(cookieStr):  

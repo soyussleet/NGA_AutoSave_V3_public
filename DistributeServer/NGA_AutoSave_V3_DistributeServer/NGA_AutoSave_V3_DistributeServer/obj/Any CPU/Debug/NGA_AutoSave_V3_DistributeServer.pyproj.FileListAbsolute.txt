@@ -1,1 +1,3 @@
 C:\Users\ASUS\source\repos\NGA_AutoSave_V3\DistributeServer\NGA_AutoSave_V3_DistributeServer\NGA_AutoSave_V3_DistributeServer\obj\Any CPU\Debug\NGA_AutoSave_V3_DistributeServer.pyproj.CoreCompileInputs.cache
+C:\Users\36349\source\repos\NGA_AutoSave_V3\DistributeServer\NGA_AutoSave_V3_DistributeServer\NGA_AutoSave_V3_DistributeServer\obj\Any CPU\Debug\NGA_AutoSave_V3_DistributeServer.pyproj.SuggestedBindingRedirects.cache
+C:\Users\36349\source\repos\NGA_AutoSave_V3\DistributeServer\NGA_AutoSave_V3_DistributeServer\NGA_AutoSave_V3_DistributeServer\obj\Any CPU\Debug\NGA_AutoSave_V3_DistributeServer.pyproj.CoreCompileInputs.cache

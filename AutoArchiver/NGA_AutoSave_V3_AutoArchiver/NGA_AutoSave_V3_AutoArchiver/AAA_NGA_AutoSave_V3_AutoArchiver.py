@@ -7,6 +7,7 @@ import threading
 import time
 from datetime import datetime  
 from utils.print_if import print_if,print_passed_time
+from utils.post_stats_operator import static,cycle_static
 
 download_should_stop = threading.Event()
 is_downloading=False
@@ -34,7 +35,7 @@ def run_monitor_thread():
             continue
         
         current_pass_time = print_passed_time()  
-        print_if(f"====================current_pass_time: {current_pass_time}",6,False)
+        print_if(f"====================current_pass_time: {current_pass_time}",0,False)
         if current_pass_time > deadlock_timeout:  
             print_if("下载线程卡死，准备重启",2,False)  
             download_should_stop.set()  
@@ -59,7 +60,11 @@ def main():
     # 启动监控线程（通常不是守护线程，以确保它在主线程结束后仍然运行）
     monitor_thread = threading.Thread(target=run_monitor_thread)  
     monitor_thread.start()  
-    monitor_thread.join() 
+
+    # 启动监控线程（通常不是守护线程，以确保它在主线程结束后仍然运行）
+    cycle_static_thread = threading.Thread(target=cycle_static)  
+    cycle_static_thread.start()  
+    cycle_static_thread.join() 
 
 # 运行主函数  
 if __name__ == "__main__":  
