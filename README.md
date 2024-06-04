@@ -1,5 +1,5 @@
 # NGA_AutoSave_V3_public
-# NGA赛博史官**V3**
+# NGA论坛贴文回溯与社区舆情分析工具（赛博史官）
 
 # 0.更新日志
 [更新日志 V3.1](UpdateLog.md)
