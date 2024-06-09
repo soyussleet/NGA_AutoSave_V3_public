@@ -57,11 +57,12 @@ def main():
     download_thread.start()  
     #download_thread.join()  
     
-    # 启动监控线程（通常不是守护线程，以确保它在主线程结束后仍然运行）
+    # 启动监控线程
     monitor_thread = threading.Thread(target=run_monitor_thread)  
     monitor_thread.start()  
+    #monitor_thread.join()  
 
-    # 启动监控线程（通常不是守护线程，以确保它在主线程结束后仍然运行）
+    # 启动统计线程
     cycle_static_thread = threading.Thread(target=cycle_static)  
     cycle_static_thread.start()  
     cycle_static_thread.join() 

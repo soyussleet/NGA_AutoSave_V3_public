@@ -24,7 +24,7 @@ class DownloadPostOperator:
     def sanitize_filename(self,filename):  
         """标准化路径"""
         # 创建一个转换表，将非法字符映射为空格  
-        trans_table = str.maketrans({k: ' ' for k in '&#<>:"|?*.'})  
+        trans_table = str.maketrans({k: '' for k in '&#<>:"|?*'})  
         # 使用转换表清理文件名  
         filename_sanitized=filename.translate(trans_table)
         return filename_sanitized
@@ -136,7 +136,7 @@ class DownloadPostOperator:
     def download(self):  
         '''下载网页序列'''  
         post_outline=self.post_outline
-        tid_url = f"{tidBaseUrl}{post_outline.tid} " 
+        tid_url = f"{tidBaseUrl}{post_outline.tid}" 
         base_url = f"{ngaBaseUrl}/{tid_url}"  
         print_if(f"********尝试下载url {base_url}********\n")  
         has_next_page = True  
@@ -144,7 +144,7 @@ class DownloadPostOperator:
         final_reply_time:datetime = datetime.now()
 
         # 文件夹处理
-        saveFileBaseFolder:str=setting_manager.get("saveFileBaseFolder")# 基础存档文件夹
+        saveFileBaseFolder:str=setting_manager.get("saveFileBaseFolderAtArchiver")# 基础存档文件夹
         savedFilePath=post_outline.savedFilePath# post_outline中存的存档帖子文件夹
         # 如果post_outline中存的存档帖子文件夹为空，那么生成这个文件夹名
         tid_part=tid_url.split('?')[1]
@@ -175,7 +175,7 @@ class DownloadPostOperator:
             page_html_text=self.page_process(page_html.text)
           
             # 构建文件名  
-            filename = f"{tid_part}.html" if curr_page == 1 else f"{tid_part}&page={curr_page}.html"  
+            filename = f"{tid_part}.html" if curr_page == 1 else f"{tid_part}page={curr_page}.html"  
             filename = f"{folder_name}/{filename}"
             
 

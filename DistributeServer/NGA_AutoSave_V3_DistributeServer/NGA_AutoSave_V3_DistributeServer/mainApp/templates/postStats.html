@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>帖子统计</title>
+    <script>
+    window.onload = function () {
+            // 获取今天的日期
+            var today = new Date();
+
+            // 设置开始日期为7天前
+            var startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+
+            // 设置结束日期为今天
+            var endDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+            // 格式化为'YYYY-MM-DD'格式的字符串
+            function formatDate(date) {
+                var d = new Date(date),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+
+                return [year, month, day].join('-');
+            }
+
+            // 设置input元素的value属性
+            document.getElementById('dateStart').value = formatDate(startDate);
+            document.getElementById('dateEnd').value = formatDate(endDate);
+        };
+    </script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #chart-container {
+            flex: 1; /* 使它占据剩余的空间 */
+            width: 100%;
+        }
+
+        /* 其他可能的样式 */
+    </style>
+</head>
+<body>
+    <div>
+        <a href="{% url 'dbGetAll' %}" target="_blank">查看所有帖子</a>
+    </div>
+    <form action="" method="get" id="selectDate">
+        <label for="dateStart">开始日期:</label>
+        <input type="date" id="dateStart" name="dateStart">
+
+        <label for="dateEnd" style="margin-left: 20px;">结束日期:</label>
+        <input type="date" id="dateEnd" name="dateEnd">
+
+        <input type="submit" value="查询">
+        <p>等刷新出日期后需要点几下“查询”按钮以刷新↑</p>
+    </form>
+    <!-- 嵌入图表 -->
+    <div id="chart-container">
+        {{ chart_html|safe }}
+    </div>
+</body>
+</html>

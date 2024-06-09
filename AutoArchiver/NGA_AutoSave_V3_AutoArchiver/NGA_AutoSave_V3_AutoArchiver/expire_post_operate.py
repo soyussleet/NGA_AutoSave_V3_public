@@ -11,7 +11,7 @@ from shutil import rmtree
 saveFileExpire:dict[str:int] = setting_manager.get("saveFileExpire")
 current_time = datetime.now()  
 fid_file_expire_default:int=saveFileExpire["default"]
-saveFileBaseFolder:str=setting_manager.get("saveFileBaseFolder")# 基础存档文件夹
+saveFileBaseFolder:str=setting_manager.get("saveFileBaseFolderAtArchiver")# 基础存档文件夹
 needDelPostExpireInDb:bool=setting_manager.get("needDelPostExpireInDb")# 基础存档文件夹
 
 def expire_post_operate():

@@ -17,8 +17,8 @@
 		"5"
 	],
 
-	"annotation_downloadThreadCnt": "同时下载线程数",
-	"downloadThreadCnt": 50,
+	"annotation_downloadThreadCnt": "同时下载进程数",
+	"downloadThreadCnt": 100,
 
 	"annotation_DB_USER": "数据库用户名",
 	"DB_USER": "DbUserName",
@@ -36,10 +36,10 @@
 	"DB_NAME": "DbName",
 
 	"annotation_TABLE_NAME_monitoring_posts": "数据库保存的帖子表名",
-	"TABLE_NAME_monitoring_posts": "PostTableName",
+	"TABLE_NAME_monitoring_posts": "monitoring_posts",
 
-	"annotation_TABLE_NAME_monitoring_boards": "数据库保存的监控中的版面",
-	"TABLE_NAME_monitoring_boards": "BoardTableName",
+	"annotation_TABLE_NAME_post_stats": "数据库保存数据统计的表名",
+	"TABLE_NAME_post_stats": "post_stats",
 
 	"annotation_monitoringBoardsUseDb": "监控中的版面是否使用数据库。true:使用数据库; false:使用setting",
 	"monitoringBoardsUseDb": false,
@@ -51,13 +51,16 @@
 		"fid=-61285727": "手游瓜事件"
 	},
 
-	"annotation_saveFileBaseFolder": "保存的帖子所在文件夹",
-	"saveFileBaseFolder": "pageSaved",
+	"annotation_saveFileBaseFolderAtArchiver": "留档机中保存的帖子所在文件夹",
+	"saveFileBaseFolderAtArchiver": "../../../pageSaved",
 
-	"annotation_logGroupShow": "print输出的类别，0:普通; 1:警告; 2:错误; 3:成功; 4:非重要; 5:阶段标题; 6:临时",
+	"annotation_saveFileBaseFolderAtServer": "查询服务器中保存的帖子所在文件夹",
+	"saveFileBaseFolderAtServer": "../../../pageSaved",
+
+	"annotation_logGroupShow": "print_if输出的类别，0:普通; 1:警告; 2:错误; 3:成功; 4:非重要; 5:阶段标题; 6:临时",
 	"logGroupShow": [ 1, 2, 3, 5, 6 ],
 
-	"annotation_logGroupName": "print输出的类别名，0:普通; 1:警告; 2:错误; 3:成功; 4:非重要; 5:阶段标题; 6:临时",
+	"annotation_logGroupName": "print_if输出的类别名，0:普通; 1:警告; 2:错误; 3:成功; 4:非重要; 5:阶段标题; 6:临时",
 	"logGroupName": [
 		"normal  :",
 		"Warning :",
@@ -68,14 +71,14 @@
 		"temp    :"
 	],
 
-	"annotation_logGroupNameShow": "print输出是否输出类别名",
+	"annotation_logGroupNameShow": "print_if输出是否输出类别名",
 	"logGroupNameShow": true,
 
 	"annotation_printIfAddTime": "print_if输出是否加入时间",
-	"printIfAddTime": false,
+	"printIfAddTime": true,
 
 	"annotation_downloadThreadDeadlockTimeout": "下载线程无输出的超时时间",
-	"downloadThreadDeadlockTimeout": 30,
+	"downloadThreadDeadlockTimeout": 60,
 
 	"annotation_downloadLoopinterval": "帖子下载周期，是一个24个元素的数组，代表0~23点往后一个小时内的下载间隔，以秒为单位",
 	"downloadLoopinterval": [ 60, 180, 300, 600, 600, 600, 450, 300, 240, 120, 120, 120, 90, 90, 90, 60, 60, 60, 60, 30, 30, 30, 30, 30 ],
@@ -83,7 +86,7 @@
 	"annotation_postExpire": "帖子距离最新回复超时时间，超时则进坟，单位：s。如果出现在首页，则会自动记为不超时",
 	"postExpire": 172800,
 
-	"annotation_saveFileExpire": "帖子文件保存时间，若超过该时间并且仍然可用，则判定为安全帖，不再保存，其余的仍然保存。单位：s。可以对不同版面的帖子分别计时，以\"fid=758\":\"172800\"的形式。若不特别记录，则以default的值为准；若记为-1，则不删除版面帖子的下载记录",
+	"annotation_saveFileExpire": "帖子安全保存时间，若超过该时间并且仍然可用，则判定为安全帖，不再保存。单位：s。可以对不同版面的帖子分别计时，以\"fid=758\":\"172800\"的形式。若不特别记录，则以default的值为准；若记为-1，则不删除版面帖子的下载记录",
 	"saveFileExpire": {
 		"default": 604800
 	},
@@ -110,6 +113,10 @@
 	"imgBaseUrl": "https://img.nga.178.com/attachments",
 
 	"annotation_show_posts_per_page":"输出帖子列表时每页帖子数量",
-	"show_posts_per_page":100
+	"show_posts_per_page":100,
+
+	"annotation_stat_trace_back_days":"帖子统计回溯时间",
+	"stat_trace_back_days":30
+
 
 }

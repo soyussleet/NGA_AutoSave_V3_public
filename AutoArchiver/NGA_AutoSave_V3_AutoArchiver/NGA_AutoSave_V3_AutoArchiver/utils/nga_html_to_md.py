@@ -79,11 +79,11 @@ class PostExtractor:
             for replay in replays:  
                 f.write(f'## \# {replay["floor_num"]}\n')  
                 f.write(f'### 发帖人链接\n')  
-                f.write(f'{replay["author_link"]}\n\n')  
+                f.write(f'[{replay["author_link"]}]({replay["author_link"]})\n')  
                 f.write(f'### 发帖时间\n')  
-                f.write(f'{replay["post_time"]}\n\n')  
+                f.write(f'{replay["post_time"]}\n')  
                 f.write(f'### 帖子内容\n')  
-                f.write(f'```\n{replay["post_content"]}\n```\n\n')  
+                f.write(f'{replay["post_content"]}\n')  
 
     def extract_and_save_md(self,post_title:str,post_tid:int, md_path:str,last_latest_floor=-1):
         """将帖子内容保存为md文件"""

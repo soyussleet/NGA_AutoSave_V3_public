@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>NGA_AutoSave_V3_DistributeServer</Name>
     <RootNamespace>NGA_AutoSave_V3_DistributeServer</RootNamespace>
-    <InterpreterId>MSBuild|env1|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -64,6 +64,14 @@
     <Compile Include="NGA_AutoSave_V3_DistributeServer\settings.py" />
     <Compile Include="NGA_AutoSave_V3_DistributeServer\urls.py" />
     <Compile Include="NGA_AutoSave_V3_DistributeServer\wsgi.py" />
+    <Compile Include="savedFileServe\admin.py" />
+    <Compile Include="savedFileServe\apps.py" />
+    <Compile Include="savedFileServe\migrations\__init__.py" />
+    <Compile Include="savedFileServe\models.py" />
+    <Compile Include="savedFileServe\tests.py" />
+    <Compile Include="savedFileServe\views.py" />
+    <Compile Include="savedFileServe\urls.py" />
+    <Compile Include="savedFileServe\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
@@ -80,17 +88,19 @@
     <Folder Include="mainApp\templates\" />
     <Folder Include="mainApp\templates\mainApp\" />
     <Folder Include="misc\" />
-    <Folder Include="misc\settings\" />
     <Folder Include="misc\utils\" />
     <Folder Include="misc\utils\__pycache__\" />
     <Folder Include="NGA_AutoSave_V3_DistributeServer\" />
+    <Folder Include="savedFileServe\" />
+    <Folder Include="savedFileServe\migrations\" />
+    <Folder Include="savedFileServe\templates\" />
+    <Folder Include="savedFileServe\templates\savedFileServe\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="mainApp\templates\allPosts.html" />
+    <Content Include="mainApp\templates\getPostRecord.html" />
     <Content Include="mainApp\templates\mainApp\index.html" />
-    <Content Include="misc\settings\cookie.json" />
-    <Content Include="misc\settings\settings.json" />
-    <Content Include="misc\settings\settingsTemplate.json" />
+    <Content Include="mainApp\templates\postStats.html" />
     <Content Include="misc\utils\__pycache__\cookie_format.cpython-310.pyc" />
     <Content Include="misc\utils\__pycache__\cookie_format.cpython-37.pyc" />
     <Content Include="misc\utils\__pycache__\m_paths.cpython-310.pyc" />
@@ -133,6 +143,7 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="savedFileServe\templates\savedFileServe\index.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">
@@ -140,10 +151,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="env1\">
-      <Id>env1</Id>
+    <Interpreter Include="env\">
+      <Id>env</Id>
       <Version>3.10</Version>
-      <Description>env1 (Python 3.10 (64-bit))</Description>
+      <Description>env (Python 3.10 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>

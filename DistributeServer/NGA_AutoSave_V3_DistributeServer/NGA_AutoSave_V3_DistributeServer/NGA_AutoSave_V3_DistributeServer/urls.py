@@ -27,5 +27,6 @@ urlpatterns = [
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
-    path('mainApp/',include('mainApp.urls'))
+    path('mainApp/',include('mainApp.urls')),
+    path('savedFile/', include('savedFileServe.urls', namespace='savedFile')),
 ]

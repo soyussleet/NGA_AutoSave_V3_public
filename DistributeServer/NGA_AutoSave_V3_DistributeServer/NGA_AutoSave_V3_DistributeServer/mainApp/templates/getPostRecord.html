@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>获取留档文件</title>
+</head>
+<body>
+    <h1> 留档文件 {{folder_name}} </h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for link in file_links %}
+            <tr>
+                <td>{{ link.name }}</td>
+                <td><a href="{% url 'savedFile:savedFileRoot' %}?link={{link.url}}" target="_blank">"{% url 'savedFile:savedFileRoot' %}?link={{link.url}}"</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

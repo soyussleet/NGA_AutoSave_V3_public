@@ -23,7 +23,7 @@ def static():
 
         # 判断为空，则直接break
         if (not list_of_new_posts) or (not list_of_invalid_posts):
-            break 
+            continue 
 
         # 整体记录
         cnt_of_new_posts=len(list_of_new_posts)
@@ -75,5 +75,3 @@ def cycle_static():
     while RUN_CYCLE_STAT:
         static()
         time.sleep(60)
-
-
