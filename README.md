@@ -2,7 +2,7 @@
 # NGA论坛贴文回溯与社区舆情分析工具（赛博史官） V3
 
 # 0.更新日志
-[更新日志 V3.1](UpdateLog.md)
+[更新日志 V3.2](UpdateLog.md)
 
 # 1.目的
 
@@ -14,7 +14,8 @@
 2.将所有帖子保存到本地,**并隐去留档者的信息**  
 3.数据库管理保存帖子的记录，并使用数据库进行一定分析  
 4.坟贴处理，超过监控期限的帖子不再下载，超过保存期限的帖子不再保存（记录为已被删帖的除外）  
-5.全篇帖子保留到markdown文档中，体积更小。**并且Markdown文档为按楼层更新储存而非按页储存**，不会出现某一楼的内容被修改后当最新一页重新下载抓取时楼层修改后的内容被抓取并保存从而丢失保存前的内容
+5.全篇帖子保留到markdown文档中，体积更小。**并且Markdown文档为按楼层更新储存而非按页储存**，不会出现某一楼的内容被修改后当最新一页重新下载抓取时楼层修改后的内容被抓取并保存从而丢失保存前的内容。  
+6.网页前端查询留档列表、发帖删帖数量统计、获取留档页面。  
 
 # 3.配置方式（AutoArchiver自动留档机部分）
 
@@ -55,7 +56,7 @@
 导入```nga_autosave_db.sql```数据库文件
 在```settings.json```中配置数据库的各个参数
 
-### ~~3.5.1.已删除监控中的版面 monitoring_boards~~
+### ~~3.5.1.监控中的版面 monitoring_boards~~
 
 ~~记录了哪些版面需要被监控~~  
 ~~![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/98214881-6d3a-4fbc-a97c-074bdd73441d)~~  
@@ -87,11 +88,7 @@
 ``` cmd
 python manage.py runserver 8080
 ```  
-后文有启动方法
-
-## 4.2.注意事项
-
-查询服务器仍在开发中，目前功能暂不完善。
+同时也提供了一键启动的```启动查询服务器.cmd```
 
 # 5.启动程序与记录查找
 
@@ -102,27 +99,31 @@ python manage.py runserver 8080
 ``` cmd
 python manage.py runserver 8080
 ```  
-可以自行查询Django服务器的启动方式，以修改```启动查询服务器.cmd```或直接启动```manage.py```的启动参数。  
+可以自行查询Django服务器的启动方式，以修改```启动查询服务器.cmd```或直接启动```manage.py```的启动参数。 
+![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/0019c78a-3b79-4bb6-b47a-0423384a7d47)
 
-## 5.2.快速网页/数据库查询
+
+## 5.2.快速网页查询、统计、留档获取
 
 当未打开查询服务器时，可以直接访问数据库，使用Navicat或VS Code的mysql插件等数据库管理软件打开。数据库配置以自动留档机的```setting.json```中的数据库配置为准。所有储存于数据库的内容都可以查询。  
 当打开了查询服务器时，访问```http://127.0.0.1:8080/mainApp/dbGetAll```即可访打开查询网页。一般，在启动```启动查询服务器.cmd```时，会自动打开该网页。如果修改了```启动查询服务器.cmd```，那么查询网页的```IP:port```需要对应修改。  
 查询服务器中目前支持查询（TID、标题、发帖人）和筛选已被删除的帖子。  
-![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/0e323518-82ab-4420-97f4-55db2d950acf)
+![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/38a86bdc-c996-495a-9f02-a99900661331)
+![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/a0abefce-0ed3-4e86-83ba-9d47d7113a58)
+![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/9dd028ba-089f-4927-b6b5-c260c68f7e7b)
 
-## 5.3.下载文件查找
+~~## 5.3.下载文件查找~~
 
-默认的留档文件在```.\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver\pageSaved```，如果修改了```setting.json```中的留档路径（```saveFileBaseFolder```），则需要对应的修改路径
-可以在数据库中按帖子id、标题、发帖人等进行搜索。更方便的是，可以直接筛选```validState=2 or retryCnt>0```的记录，即可直接筛选得到已经被删或锁的帖子(validState=1为可用，validState=2为确认被锁/删的帖子，retryCnt为帖子无法访问时的重试次数，重试次数大于一定值（默认为5）时即会被记为validState=2)。你可以安装navicat等数据库管理软件进行数据库可视化管理。    
-![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/68e8b669-5981-42a4-a3e4-af75676be785)    
-在```pageSaved```文件夹中（如果```setting.json```配置了```saveFileBaseFolder```，则在对应文件夹中），可以找到保存的帖子网页    
-![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/8f393d9e-5f0f-4ce3-a953-b9d9d737f5fd)  
+~~默认的留档文件在```.\AutoArchiver\NGA_AutoSave_V3_AutoArchiver\NGA_AutoSave_V3_AutoArchiver\pageSaved```，如果修改了```setting.json```中的留档路径（```saveFileBaseFolder```），则需要对应的修改路径~~
+~~可以在数据库中按帖子id、标题、发帖人等进行搜索。更方便的是，可以直接筛选```validState=2 or retryCnt>0```的记录，即可直接筛选得到已经被删或锁的帖子(validState=1为可用，validState=2为确认被锁/删的帖子，retryCnt为帖子无法访问时的重试次数，重试次数大于一定值（默认为5）时即会被记为validState=2)。你可以安装navicat等数据库管理软件进行数据库可视化管理。~~    
+~~![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/68e8b669-5981-42a4-a3e4-af75676be785)~~    
+~~在```pageSaved```文件夹中（如果```setting.json```配置了```saveFileBaseFolder```，则在对应文件夹中），可以找到保存的帖子网页~~    
+~~![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/8f393d9e-5f0f-4ce3-a953-b9d9d737f5fd)~~  
 
 # 6.特别注意
   
 * 1.初次保留超高楼层的帖子的时候会因为服务器关闭session而出错，这时候需要在settings里添加标题过滤，或在数据库中手动添加相关记录，并将lastPage修改为当前真实的末页页码。  
-* 2.查询服务器目前功能尚不完善，需要后续开发。  
+* 2.在2024.06.10前部署过的话，请注意转移留档文件夹的位置。参看V3.2的更新记录
   
 # 7.ToDo
   
