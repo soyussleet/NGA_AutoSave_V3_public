@@ -9,8 +9,10 @@
   
 ## V3.2
 
-* 1.新增查询服务器，现在可以查询帖子列表，获取发帖删帖数量统计，获取存档文件
-* 2.**更改了存档文件的位置**和设置文件的位置，现在在根目录里了
+* 1.新增查询服务器，现在可以查询帖子列表，获取发帖删帖数量统计，获取存档文件。  
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/38a86bdc-c996-495a-9f02-a99900661331)
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/a0abefce-0ed3-4e86-83ba-9d47d7113a58)
 ![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/9dd028ba-089f-4927-b6b5-c260c68f7e7b)
+
+* 2.**更改了存档文件的位置**和设置文件的位置，现在在根目录里了。
+![image](https://github.com/soyussleet/NGA_AutoSave_V3_public/assets/164469268/5e7dd2e4-76ad-491f-8b7c-e87c3d916e70)
