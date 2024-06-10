@@ -33,7 +33,7 @@ pytz==2024.1
 pywin32==306
 pyzmq==26.0.0
 requests==2.31.0
-setuptools==63.2.0
+setuptools==65.5.1
 six==1.16.0
 soupsieve==2.5
 SQLAlchemy==2.0.29
