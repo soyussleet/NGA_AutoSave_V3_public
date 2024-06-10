@@ -21,7 +21,7 @@ matplotlib-inline==0.1.7
 nest-asyncio==1.6.0
 packaging==24.0
 parso==0.8.4
-pip==22.2.2
+pip==23.3
 platformdirs==4.2.0
 prompt-toolkit==3.0.43
 psutil==5.9.8
